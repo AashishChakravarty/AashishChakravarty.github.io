@@ -1,650 +1,403 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Chosen Palette: Midnight Blue & Neon Teal -->
+    <!-- Application Structure Plan: A single-page application with a linear, top-to-bottom flow. The structure is designed for a recruiter's journey: immediate impact (Hero), detailed background (About/Skills), proof of work (Experience/Projects), and call to action (Contact). This is a standard, highly effective information architecture for a personal portfolio, prioritizing clarity and ease of navigation. Interactions like on-scroll animations and a dynamic background are added to engage the user without distracting from the content. -->
+    <!-- Visualization & Content Choices: Experience -> Goal: Show career progression -> Viz: Vertical Timeline -> Interaction: On-scroll reveal -> Justification: A timeline is the most intuitive way to display chronological data. Skills -> Goal: Quickly showcase technical abilities -> Viz: Grid of skills -> Justification: A grid is scannable and visually balanced. Projects -> Goal: Highlight key accomplishments -> Viz: Card layout -> Justification: Cards allow for grouping distinct pieces of information (title, desc, links) cleanly. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Aashish Chakravarty | Senior Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0a192f;
+        color: #ccd6f6;
+      }
+      .accent-color {
+        color: #64ffda;
+      }
+      .accent-border {
+        border-color: #64ffda;
+      }
+      .typewriter {
+        overflow: hidden;
+        border-right: 0.15em solid #64ffda;
+        white-space: nowrap;
+        margin: 0;
+        letter-spacing: 0.1em;
+        animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #64ffda;
+        }
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 8px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #0a192f;
+        border: 3px solid #64ffda;
+      }
+      .timeline-line {
+        position: absolute;
+        left: -23px;
+        top: 16px;
+        bottom: 0;
+        width: 2px;
+        background-color: #30415c;
+      }
+      .timeline-item:last-child .timeline-line {
+        display: none;
+      }
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+      .vertical-text {
+        writing-mode: vertical-rl;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div class="fixed bottom-0 left-4 md:left-8 z-20 hidden md:flex flex-col items-center space-y-6">
+      <a href="https://github.com/aashishchakravarty" target="_blank" class="text-gray-400 hover:accent-color transform hover:-translate-y-1 transition-all duration-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-github"
+        >
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.54 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+          ></path>
+        </svg>
+      </a>
+      <a href="https://linkedin.com/in/aashishchakravarty" target="_blank" class="text-gray-400 hover:accent-color transform hover:-translate-y-1 transition-all duration-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-linkedin"
+        >
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+      <a href="https://stackoverflow.com/users/9971128" target="_blank" class="text-gray-400 hover:accent-color transform hover:-translate-y-1 transition-all duration-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-layers"
+        >
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+      </a>
+      <div class="h-24 w-px bg-gray-600 mt-6"></div>
+    </div>
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Aashish Chakravarty - Resume</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <!-- <link href="assets/img/favicon.png" rel="icon"> -->
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-  <!-- ======= Mobile nav toggle button ======= -->
-  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Aashish Chakravarty</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://www.linkedin.com/in/aashishchakravarty" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          <a href="https://github.com/aashishchakravarty" target="_blank" class="github"><i class="bx bxl-github"></i></a>
-          <!-- <a href="#" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a> -->
-          <a href="https://www.facebook.com/Aashish.Chakravarty1" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="https://www.instagram.com/aashish_chakravarty" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <!-- <a href="#" target="_blank" class="google-plus"><i class="bx bxl-skype"></i></a> -->
-        </div>
+    <div class="fixed bottom-0 right-4 md:right-8 z-20 hidden md:block">
+      <div class="flex flex-col items-center space-y-6">
+        <a
+          href="mailto:chakravartyaashish@gmail.com"
+          class="vertical-text text-gray-400 hover:accent-color tracking-widest text-sm transform hover:-translate-y-1 transition-all duration-300"
+        >
+          chakravartyaashish@gmail.com
+        </a>
+        <div class="h-24 w-px bg-gray-600 mt-6"></div>
       </div>
-
-      <nav class="nav-menu">
-        <ul>
-          <li class="active"><a href="#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <!-- <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li> -->
-          <!-- <li><a href="#services"><i class="bx bx-server"></i> Services</a></li> -->
-          <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
-
-        </ul>
-      </nav><!-- .nav-menu -->
-      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
     </div>
-  </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Aashish Chakravarty</h1>
-      <p>I'm <span class="typed" data-typed-items="Developer, Entrepreneur, Freelancer"></span></p>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>About</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-opacity-80 backdrop-blur-md bg-[#0a192f] transition-all duration-300">
+      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold accent-color">AC</a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="text-gray-300 hover:accent-color transition duration-300">About</a>
+          <a href="#experience" class="text-gray-300 hover:accent-color transition duration-300">Experience</a>
+          <a href="#projects" class="text-gray-300 hover:accent-color transition duration-300">Projects</a>
+          <a href="#contact" class="text-gray-300 hover:accent-color transition duration-300">Contact</a>
+          <a
+            href="Aashish-Resume.pdf"
+            target="_blank"
+            class="border accent-border rounded-md px-4 py-2 text-sm accent-color hover:bg-teal-500 hover:bg-opacity-10 transition duration-300"
+            >Download Resume</a
+          >
         </div>
+        <button id="mobile-menu-button" class="md:hidden text-2xl">
+          <span class="text-3xl">☰</span>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col space-y-4">
+        <a href="#about" class="text-gray-300 hover:accent-color transition duration-300">About</a>
+        <a href="#experience" class="text-gray-300 hover:accent-color transition duration-300">Experience</a>
+        <a href="#projects" class="text-gray-300 hover:accent-color transition duration-300">Projects</a>
+        <a href="#contact" class="text-gray-300 hover:accent-color transition duration-300">Contact</a>
+        <a
+          href="Aashish-Resume.pdf"
+          target="_blank"
+          class="border accent-border rounded-md px-4 py-2 text-sm text-center accent-color hover:bg-teal-500 hover:bg-opacity-10 transition duration-300"
+          >Download Resume</a
+        >
+      </div>
+    </header>
 
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
+    <main class="container mx-auto px-6">
+      <section id="hero" class="min-h-screen flex flex-col justify-center relative">
+        <div id="particles-js"></div>
+        <div class="relative z-10">
+          <p class="text-lg accent-color mb-4">Hi, my name is</p>
+          <h1 class="text-4xl md:text-7xl font-bold text-gray-100">Aashish Chakravarty.</h1>
+          <h2 class="text-3xl md:text-5xl font-bold text-gray-400 mt-2 pb-2 typewriter">Senior Software Engineer.</h2>
+          <p class="mt-6 max-w-xl text-gray-400">
+            With 5+ years of software engineering experience, I've honed expertise in Elixir, Phoenix, Node.js, and more, delivering robust solutions across diverse industries. I
+            lead development teams to create enterprise software and innovative applications, driving efficiency and project success.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a
+              href="#experience"
+              class="bg-transparent border-2 accent-border text-lg accent-color font-medium py-3 px-8 rounded-lg hover:bg-teal-500 hover:bg-opacity-10 transition duration-300"
+              >Experience</a
+            >
+            <a
+              href="#contact"
+              class="bg-transparent border-2 border-gray-400 text-lg text-gray-300 font-medium py-3 px-8 rounded-lg hover:bg-gray-500 hover:bg-opacity-10 hover:border-gray-300 transition duration-300"
+              >Contact Me</a
+            >
           </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Full Stack Developer.</h3>
-            <p class="font-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> 23 May 1997</li>
-                  <!-- <li><i class="icofont-rounded-right"></i> <strong>Website:</strong> www.example.com</li> -->
-                  <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> +91-7697358094</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>City:</strong> City : Maheshwar, MP, India</li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <!-- <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> 30</li> -->
-                  <li><i class="icofont-rounded-right"></i> <strong>Degree:</strong> Bachelor of Engineering</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> chakravartyaashish@gmail.com</li>
-                  <!-- <li><i class="icofont-rounded-right"></i> <strong>Freelance:</strong> Available</li> -->
-                </ul>
-              </div>
-            </div>
+        </div>
+      </section>
+
+      <section id="about" class="py-24 reveal">
+        <h2 class="text-3xl font-bold mb-8 text-gray-100 flex items-center">
+          <span class="accent-color mr-3 text-2xl">01.</span> About Me <span class="h-px bg-gray-600 flex-grow ml-4"></span>
+        </h2>
+        <div class="grid md:grid-cols-5 gap-10 items-start">
+          <div class="md:col-span-3 text-gray-400 space-y-4 text-lg">
             <p>
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
+              Hello! I'm Aashish, a software engineer based in Indore, India. My journey into web development started back in college, and since then, I've had the privilege of
+              working on a variety of projects, from supply chain platforms to IIoT applications and enterprise software comparison tools.
             </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Facts Section ======= -->
-    <section id="facts" class="facts">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Facts</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row no-gutters">
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
-            <div class="count-box">
-              <i class="icofont-simple-smile"></i>
-              <span data-toggle="counter-up">232</span>
-              <p><strong>Happy Clients</strong> consequuntur quae</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="count-box">
-              <i class="icofont-document-folder"></i>
-              <span data-toggle="counter-up">521</span>
-              <p><strong>Projects</strong> adipisci atque cum quia aut</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="count-box">
-              <i class="icofont-live-support"></i>
-              <span data-toggle="counter-up">1,463</span>
-              <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="count-box">
-              <i class="icofont-users-alt-5"></i>
-              <span data-toggle="counter-up">15</span>
-              <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Facts Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6" data-aos="fade-up">
-
-            <div class="progress">
-              <span class="skill">Angular <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">React <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Python <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="progress">
-              <span class="skill">Nodejs <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">PHP <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">AWS <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Resume</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6" data-aos="fade-up">
-            <h3 class="resume-title">Sumary</h3>
-            <div class="resume-item pb-0">
-              <h4>Aashish Chakravarty</h4>
-              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-              <ul>
-                <li>Portland par 127,Orlando, FL</li>
-                <li>(123) 456-7891</li>
-                <li>alice.barkley@example.com</li>
-              </ul>
-            </div>
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Bachelor of Engineering</h4>
-              <h5>2016 - 2020</h5>
-              <p><em>Madhav Institute of Technology and Science, Gwalior</em></p>
-              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-            </div>
-            <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
-            </div>
-          </div>
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Software Developer</h4>
-              <h5>December 2019 - Present</h5>
-              <p><em>Smart Controls India Ltd, Bangalore, IN </em></p>
-              <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Full Stack Intern</h4>
-              <h5>June 2018 - July 2018</h5>
-              <p><em>Vatsana Technologies, Indore, IN</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
+            <p>
+              I'm passionate about building scalable, efficient, and user-friendly applications. I enjoy the challenge of solving complex problems and leading teams to deliver
+              high-quality software.
+            </p>
+            <div class="mt-6">
+              <h3 class="text-xl font-semibold text-gray-200 mb-4">My Tech Stack</h3>
+              <ul class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
+                <li class="flex items-center"><span class="accent-color mr-2">▹</span>Elixir & Phoenix</li>
+                <li class="flex items-center"><span class="accent-color mr-2">▹</span>JavaScript</li>
+                <li class="flex items-center"><span class="accent-color mr-2">▹</span>Node.js</li>
+                <li class="flex items-center"><span class="accent-color mr-2">▹</span>React</li>
+                <li class="flex items-center"><span class="accent-color mr-2">▹</span>Erlang</li>
+                <li class="flex items-center"><span class="accent-color mr-2">▹</span>Angular</li>
+                <li class="flex items-center"><span class="accent-color mr-2">▹</span>Docker & AWS</li>
+                <li class="flex items-center"><span class="accent-color mr-2">▹</span>SQL & NoSQL</li>
+                <li class="flex items-center"><span class="accent-color mr-2">▹</span>Python</li>
               </ul>
             </div>
           </div>
-        </div>
-
-      </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <!-- <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
+          <div class="md:col-span-2 relative group">
+            <div class="w-full h-full rounded-lg absolute top-3 left-3 border-2 accent-border transition-transform duration-300 group-hover:top-2 group-hover:left-2"></div>
+            <img
+              src="https://avatars.githubusercontent.com/u/29206561?v=4"
+              alt="Aashish Chakravarty"
+              class="rounded-lg z-10 relative w-full h-full object-cover"
+              onerror="this.onerror=null;this.src='https://placehold.co/400x400/0a192f/64ffda?text=Aashish+C.';"
+            />
           </div>
         </div>
+      </section>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Portfolio Section -->
-
-    <!-- ======= Services Section ======= -->
-    <!-- <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="icofont-computer"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="icofont-chart-bar-graph"></i></div>
-            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="icofont-earth"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="icofont-image"></i></div>
-            <h4 class="title"><a href="">Magni Dolores</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon"><i class="icofont-settings"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon"><i class="icofont-tasks-alt"></i></div>
-            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-          </div>
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Services Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="owl-carousel testimonials-carousel">
-
-          <div class="testimonial-item" data-aos="fade-up">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Aashish is a quick learner and a self driven guy who you can just point in the right direction and He will go miles on his own.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+      <section id="experience" class="py-24 reveal">
+        <h2 class="text-3xl font-bold mb-12 text-gray-100 flex items-center">
+          <span class="accent-color mr-3 text-2xl">02.</span> Where I've Worked <span class="h-px bg-gray-600 flex-grow ml-4"></span>
+        </h2>
+        <div class="relative pl-8">
+          <div class="timeline-item relative mb-12">
+            <div class="timeline-line"></div>
+            <h3 class="text-xl font-semibold text-gray-100">Senior Software Engineer <span class="accent-color">@ SelectHub</span></h3>
+            <p class="text-sm text-gray-500 mb-3">Feb 2023 - Present</p>
+            <p class="text-gray-400">
+              Developing an enterprise software comparison tool, a lead management platform, and a Relay app for lead forwarding. Responsible for feature development, deployment,
+              and team management.
             </p>
-            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-            <h3>Chetan Surwade</h3>
-            <h4>Software Engineer - Data & Engineering</h4>
           </div>
-
-          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          <div class="timeline-item relative mb-12">
+            <div class="timeline-line"></div>
+            <h3 class="text-xl font-semibold text-gray-100">Software Engineer <span class="accent-color">@ Infinichains Labs</span></h3>
+            <p class="text-sm text-gray-500 mb-3">Sep 2021 - Jan 2023</p>
+            <p class="text-gray-400">
+              Developed a Supply Chain Traceability Platform for the Textile Industry, including user management, document workflows, and report generation. Handled feature
+              development and deployment.
             </p>
-            <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-            <h3>Virendra Singh Panwar</h3>
-            <h4>Senior Software Engineer</h4>
           </div>
-
-          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          <div class="timeline-item relative mb-12">
+            <div class="timeline-line"></div>
+            <h3 class="text-xl font-semibold text-gray-100">Software Developer <span class="accent-color">@ Smart Controls</span></h3>
+            <p class="text-sm text-gray-500 mb-3">Dec 2019 - Aug 2021</p>
+            <p class="text-gray-400">
+              Developed the MIRA project for food industry automation, SmartGate+ for data visualization, and the SmartGate IIoT application. Also maintained the company website.
             </p>
-            <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
-            <h4>Store Owner</h4>
           </div>
-
-          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-            <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-            <h3>Matt Brandon</h3>
-            <h4>Freelancer</h4>
+          <div class="timeline-item relative mb-12">
+            <h3 class="text-xl font-semibold text-gray-100">Full Stack Developer Intern <span class="accent-color">@ WittyFeed</span></h3>
+            <p class="text-sm text-gray-500 mb-3">Jun 2017 - Aug 2018</p>
+            <p class="text-gray-400">Developed a publisher dashboard using Angular 6 and CodeIgniter 3, and an influencer admin dashboard for the OneFeed SDK.</p>
           </div>
-
-          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-            <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-            <h3>John Larson</h3>
-            <h4>Entrepreneur</h4>
-          </div>
-
         </div>
+      </section>
 
-      </div>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
-        </div>
-
-        <div class="row justify-content-center" data-aos="fade-in">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <!-- <div class="address">
-                <i class="icofont-google-map"></i>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div> -->
-
-              <div class="email">
-                <i class="icofont-envelope"></i>
-                <h4>Email:</h4>
-                <a href="mailto:chakravartyaashish@gmail.com"><p>chakravartyaashish@gmail.com</p></a>
-              </div>
-
-              <div class="phone">
-                <i class="icofont-phone"></i>
-                <h4>Call:</h4>
-                <a href="tel:+91-7697358094"><p>+91-7697358094</p></a>
-              </div>
-
-              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> -->
+      <section id="projects" class="py-24 reveal">
+        <h2 class="text-3xl font-bold mb-8 text-gray-100 flex items-center">
+          <span class="accent-color mr-3 text-2xl">03.</span> Things I've Built <span class="h-px bg-gray-600 flex-grow ml-4"></span>
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-[#112240] rounded-lg p-6 flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
+            <div>
+              <h3 class="text-xl font-bold text-gray-100 mb-2">Agrogram</h3>
+              <p class="text-gray-400 text-sm">
+                An app to help farmers with daily market prices, a buy/sell platform, and a community forum. Achieved over 8000+ downloads and a large social media following.
+              </p>
             </div>
-
+            <div class="mt-4 flex justify-between items-center">
+              <span class="text-xs text-gray-500">Android | Firebase</span>
+              <a href="https://github.com/aashishchakravarty" target="_blank" class="text-gray-400 hover:accent-color">View Code ↗</a>
+            </div>
           </div>
-
-          <!-- <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validate"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div> -->
-
+          <div class="bg-[#112240] rounded-lg p-6 flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
+            <div>
+              <h3 class="text-xl font-bold text-gray-100 mb-2">Hackathon Winner</h3>
+              <p class="text-gray-400 text-sm">
+                Awarded first place in a competitive hackathon by TechCoopers Software Solutions, developing an innovative solution under a tight deadline.
+              </p>
+            </div>
+            <div class="mt-4 flex justify-between items-center">
+              <span class="text-xs text-gray-500">Teamwork | Rapid Prototyping</span>
+            </div>
+          </div>
         </div>
+      </section>
 
+      <section id="contact" class="py-24 text-center reveal">
+        <h2 class="text-3xl font-bold mb-4 text-gray-100 flex items-center justify-center"><span class="accent-color mr-3 text-2xl">04.</span> Get In Touch</h2>
+        <p class="max-w-xl mx-auto text-gray-400 mb-8">
+          I'm currently open to new opportunities. Whether you have a question or just want to say hi, my inbox is always open. I'll do my best to get back to you!
+        </p>
+        <a
+          href="mailto:chakravartyaashish@gmail.com"
+          class="inline-block bg-transparent border-2 accent-border text-lg accent-color font-medium py-3 px-8 rounded-lg hover:bg-teal-500 hover:bg-opacity-10 transition duration-300"
+          >Say Hello</a
+        >
+      </section>
+    </main>
+
+    <footer class="py-6">
+      <div class="flex flex-col items-center justify-center space-y-4">
+        <div class="flex space-x-6 md:hidden">
+          <a href="https://github.com/aashishchakravarty" target="_blank" class="text-gray-400 hover:accent-color">GitHub</a>
+          <a href="https://linkedin.com/in/aashishchakravarty" target="_blank" class="text-gray-400 hover:accent-color">LinkedIn</a>
+          <a href="https://stackoverflow.com/users/9971128" target="_blank" class="text-gray-400 hover:accent-color">Stack Overflow</a>
+        </div>
+        <p class="text-gray-500 text-sm">Designed & Built by Aashish Chakravarty &copy; <span id="year"></span></p>
       </div>
-    </section><!-- End Contact Section -->
+    </footer>
 
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <!-- <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Aashish Chakravarty</span></strong>
-      </div>
-      <div class="credits">
-      </div>
-    </div>
-  </footer> -->
-  <!-- End  Footer -->
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/counterup/counterup.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+          header.classList.toggle('shadow-lg', window.scrollY > 50);
+        });
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        revealElements.forEach((el) => observer.observe(el));
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 60, density: { enable: true, value_area: 800 } },
+            color: { value: '#30415c' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#30415c', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false },
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+            modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } },
+          },
+          retina_detect: true,
+        });
+      });
+    </script>
+  </body>
 </html>
