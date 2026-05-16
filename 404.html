@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Aashish Chakravarty</title>
+    <meta name="description" content="Page not found." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0B0A09" />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B0A09'/%3E%3Ctext x='50%25' y='53%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='13' font-weight='700' fill='%23FFA657'%3Eac%3C/text%3E%3C/svg%3E"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0b0a09;
+        --text: #eceae8;
+        --text-muted: #8e8a85;
+        --text-dim: #56524d;
+        --border: #221e1a;
+        --border-bright: #2e2924;
+        --accent: #ffa657;
+        --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+      }
+      html {
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        font-family: var(--font-sans);
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1.25rem;
+        position: relative;
+        overflow: hidden;
+      }
+      ::selection {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .bg-dots {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+        background-size: 24px 24px;
+      }
+      .bg-spot {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: radial-gradient(circle 500px at 50% 40%, rgba(255, 166, 87, 0.08), transparent 70%);
+      }
+
+      main {
+        position: relative;
+        z-index: 10;
+        max-width: 520px;
+        width: 100%;
+      }
+
+      .prompt {
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .prompt .at {
+        color: var(--accent);
+      }
+      .prompt .cursor {
+        display: inline-block;
+        width: 0.5rem;
+        height: 1rem;
+        background: var(--accent);
+        margin-left: 0.25rem;
+        animation: blink 1s steps(2) infinite;
+        vertical-align: middle;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .code {
+        font-family: var(--font-mono);
+        color: var(--text-dim);
+        font-size: 0.8125rem;
+        margin-bottom: 2.5rem;
+        line-height: 1.8;
+      }
+      .code .ln {
+        color: var(--accent);
+      }
+      .code .key {
+        color: var(--text);
+      }
+
+      h1 {
+        font-size: clamp(3.5rem, 12vw, 6rem);
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+      h1 .accent {
+        color: var(--accent);
+      }
+
+      .sub {
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.625rem;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1rem;
+        border-radius: 6px;
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        font-weight: 500;
+        transition:
+          background 0.18s ease,
+          color 0.18s ease,
+          border-color 0.18s ease,
+          transform 0.18s ease;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: var(--bg);
+      }
+      .btn-primary:hover {
+        background: #ffb87a;
+        transform: translateY(-1px);
+      }
+      .btn-ghost {
+        border: 1px solid var(--border-bright);
+        color: var(--text);
+      }
+      .btn-ghost:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-dots" aria-hidden="true"></div>
+    <div class="bg-spot" aria-hidden="true"></div>
+
+    <main>
+      <div class="prompt">
+        <span>aashish</span><span class="at">@</span><span>dev</span><span style="color: var(--text-dim)">:~$</span>
+        <span>cat /var/log/error.log<span class="cursor"></span></span>
+      </div>
+
+      <div class="code">
+        <div><span class="ln">[error]</span> <span class="key">page_not_found</span>: requested route does not exist</div>
+        <div><span class="ln">[hint]</span> &nbsp;the URL may have moved or never existed</div>
+      </div>
+
+      <h1>4<span class="accent">0</span>4</h1>
+      <p class="sub">// nothing here. yet.</p>
+
+      <div class="actions">
+        <a href="/" class="btn btn-primary"> ← back home </a>
+        <a href="mailto:chakravartyaashish@gmail.com" class="btn btn-ghost">report broken link</a>
+      </div>
+    </main>
+  </body>
+</html>
